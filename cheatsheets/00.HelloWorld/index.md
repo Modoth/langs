@@ -16,13 +16,13 @@ mysql_config_editor set --host=localhost --user=root --password
 * CPP: clang, lldb
 ```sh
 # ubuntu
-sudo apt install clang lldb
+sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 ```
 
-* Matlab: octave compatible
+* Matlab
 
 ```sh
-sudo apt install octave
+docker run -it --name matlab --shm-size=2048M mathworks/matlab:r2021b
 ```
 
 * Excel
@@ -35,7 +35,8 @@ docker run -it arnoudbuzing/wolframengine bash
 * Bash
 * Haskell: ghc
 ```sh
-sudo apt install ghc
+sudo add-apt-repository ppa:hvr/ghc
+sudo apt install ghc-9.0.1
 ```
 * Python: python3
 * Lua
@@ -45,12 +46,18 @@ sudo apt install lua5.3
 
 * Ruby
 ```sh
-sudo apt install ruby
+sudo apt-add-repository -y ppa:rael-gc/rvm
+sudo apt install rvm
+# add /usr/share/rvm/src/rvm/bin to PATH
+rvm install 3.0.2
+rvm alias create default ruby-3.0.2
+#add /usr/share/rvm/rubies/default/bin to PATH
 ```
 
 * Scala
 ```sh
-sudo apt install scala
+curl -s "https://get.sdkman.io" | bash
+sbt install scala
 ```
 
 * Powershell
@@ -63,7 +70,8 @@ sudo apt install -y powershell
 
 * Go
 ```sh
-sudo apt install golang
+wget 'https://golang.org/dl/go1.17.2.linux-amd64.tar.gz' -O go.tar.gz
+tar xzvf go.tar.gz
 ```
 
 * Rust
@@ -225,7 +233,7 @@ print("Hello, world!")
 
 * SQL: `mysql < helloworld.sql`
 * C++
-* Matlab: `octave helloworld.m`
+* Matlab
 * Excel
 * Perl: `perl helloworld.pl`
 * Mathematica: `wolframscript -f|-script helloworld.wls`
@@ -248,7 +256,7 @@ print("Hello, world!")
 
 * SQL: `mysql <<< ''`
 * C++
-* Matlab: `octave --eval ''`
+* Matlab: `matlab -batch ''`
 * Excel
 * Perl: `perl -e ''`
 * Mathematica: `wolframscript -c ''`
@@ -271,7 +279,7 @@ print("Hello, world!")
 
 * SQL: `sql`
 * C++
-* Matlab: `octave`
+* Matlab: `matlab`
 * Excel
 * Perl: `perl -de0`
 * Mathematica: `wolframscript`
