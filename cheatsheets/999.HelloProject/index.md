@@ -30,6 +30,7 @@ mkdir HelloProject && cd HelloProject
 cabal init
 cabal build # cabal run
 ```
+
     * stack
 ```sh
 wget -qO- https://get.haskellstack.org/ | sh
@@ -51,6 +52,7 @@ source HelloProject/bin/activate
 bundle init
 bundle exec
 ```
+
     * rail
 ```sh
 # todo
@@ -146,6 +148,7 @@ cabal update
 cabal install HaXml
 
 ```
+
     * stack
 ```
 # ~/.stack/config.yaml
