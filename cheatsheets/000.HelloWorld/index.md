@@ -290,7 +290,7 @@ putStrLn "Hello, world!"
 ```
 * Python: `python3`
 * Lua: `lua`
-* Ruby: `ruby`
+* Ruby: `irb`
 * Scala: `scala`
 ```scala
 println("Hello, world!")
