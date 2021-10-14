@@ -48,6 +48,12 @@ goto done
 goto label
 ```
 
+* Dart
+* Kotlin
+* Julia
+* Shortcuts
+* Swift
+
 ## Selections
 * SQL
 ```sql
@@ -274,6 +280,100 @@ default:
 }
 ```
 
+* Rust
+```rs
+// if else 
+let y = if 12 * 15 > 150 {
+    "Bigger"
+} else {
+    "Smaller"
+};
+
+let message = match x {
+    0 | 1  => "not many",
+    2 ..= 9 => "a few",
+    _      => "lots"
+};
+
+```
+
+* Dart
+```dart
+// if else
+// switch case
+```
+
+* Kotlin
+```kt
+// if else
+// when else
+when (x) {
+    1 -> print("x == 1")
+    else -> {
+        print("x is not 1")
+    }
+}
+
+when (x) {
+    in 1..10 -> print("x is in the range")
+    in validNumbers -> print("x is valid")
+    !in 10..20 -> print("x is outside the range")
+    else -> print("none of the above")
+}
+
+fun hasPrefix(x: Any) = when(x) {
+    is String -> x.startsWith("prefix")
+    else -> false
+}
+```
+
+* Julia
+```jl
+# if elseif else  end
+# begin end
+if x < y
+    println("x is less than y")
+elseif x > y
+    println("x is greater than y")
+else
+    println("x is equal to y")
+end
+```
+
+* Shortcuts
+* Swift
+```swift
+// if else 
+// switch case default
+switch approximateCount {
+case 0:
+    naturalCount = "no"
+case 1..<5:
+    naturalCount = "a few"
+case 5..<12:
+    naturalCount = "several"
+case 12..<100:
+    naturalCount = "dozens of"
+case 100..<1000:
+    naturalCount = "hundreds of"
+default:
+    naturalCount = "many"
+}
+
+switch yetAnotherPoint {
+case let (x, y) where x == y:
+    print("(\(x), \(y)) is on the line x == y")
+case let (x, y) where x == -y:
+    print("(\(x), \(y)) is on the line x == -y")
+case let (x, y):
+    print("(\(x), \(y)) is just some arbitrary point")
+}
+
+guard let name = person["name"] else {
+  return
+}
+```
+
 ## Iterations
 * SQL
 ```sql
@@ -449,6 +549,87 @@ for i, s := range a {
 }
 ```
 
+* Rust
+```rs
+loop { println!("I live."); }
+while i < 10 {
+    println!("hello");
+    i = i + 1;
+}
+
+while let Some(y) = x.pop() {
+    println!("y = {}", y);
+}
+
+let mut sum = 0;
+for n in 1..11 {
+    sum += n;
+}
+
+'outer: loop {
+    while true {
+        break 'outer;
+    }
+}
+
+// continue, break
+```
+
+* Dart
+```dart
+// for(;;)
+// for(in)
+// while{}
+// do{}while
+// break, continue
+```
+
+* Kotlin
+```kt
+// for in
+
+for (i in 1..3) {
+    println(i)
+}
+for (i in 6 downTo 0 step 2) {
+    println(i)
+}
+
+// while{}, do{}while
+// break, continue @label, label@ for{...
+// return @label
+```
+
+* Julia
+```jl
+# while end
+# for end
+for i = 1:5
+   println(i)
+end
+for i in [1,4,0]
+   println(i)
+end
+for s ∈ ["foo","bar","baz"]
+   println(s)
+end
+# continue , break
+```
+
+* Shortcuts
+* Swift
+```swift
+for name in names {
+    print("Hello, \(name)!")
+}
+// for index in 1...5
+// for tickMark in 0..<minutes
+// for tickMark in stride(from: 3, through: hours, by: hourInterval)
+// while {}
+// repeat {} while
+// continue, break, fallthrough; + label
+```
+
 ## Exceptions
 * SQL
 ```sql
@@ -601,6 +782,63 @@ defer func() {      // recovers panic
 panic(s) 
 ```
 
+* Rust
+```rs
+let f = File::open("hello.txt");
+let f = match f {
+  Ok(file) => file,
+  Err(error) => panic!("Problem opening the file: {:?}", error),
+};
+
+//or
+let f = File::open("hello.txt").unwrap();
+//
+let f = File::open("hello.txt").expect("Failed to open hello.txt");
+```
+
+* Dart
+```dart
+// try on catch finally, throw rethrow
+try {
+  // ···
+} on Exception catch (e) {
+  print('Exception details:\n $e');
+} catch (e, s) {
+  print('Exception details:\n $e');
+  print('Stack trace:\n $s');
+}
+```
+
+* Kotlin
+```kt
+// try catch finally
+val a: Int? = try { input.toInt() } catch (e: NumberFormatException) { null }
+val s = person.name ?: throw IllegalArgumentException("Name required")
+```
+
+* Julia
+```jl
+throw(DomainError(x, "argument must be nonnegative"))
+try
+   sqrt("ten")
+catch e
+   println("You should have entered a numeric value")
+end
+```
+
+* Shortcuts
+* Swift
+```swift
+// try catch where , throw , defer
+let file = open(filename)
+defer {
+    close(file)
+}
+while let line = try file.readline() {
+    // Work with the file.
+}
+```
+
 ## Others
 * SQL
 * Cpp
@@ -652,6 +890,37 @@ with EXPRESSION as TARGET: # Resource dispose
 ```go
 go Server()
 defer fmt.Println("world")
+```
+* Rust
+```rs
+async fn learn_and_sing() {
+    // Wait until the song has been learned before singing it.
+    // We use `.await` here rather than `block_on` to prevent blocking the
+    // thread, which makes it possible to `dance` at the same time.
+    let song = learn_song().await;
+    sing_song(song).await;
+}
+```
+
+* Dart
+* Kotlin
+* Julia
+```jl
+t = @task begin; sleep(5); println("done"); end
+schedule(t); wait(t)
+
+chnl = Channel(producer);
+put!(chnl, "stop")
+take!(chnl)
+```
+
+* Shortcuts
+* Swift
+```swift
+func listPhotos(inGallery name: String) async -> [String] {
+    await Task.sleep(2 * 1_000_000_000)  // Two seconds
+    return ["IMG001", "IMG99", "IMG0404"]
+}
 ```
 
 ##
