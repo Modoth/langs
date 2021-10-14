@@ -61,6 +61,13 @@ IFS(A2>89,"A",A2>79,"B",A2>69,"C",A2>59,"D",TRUE,"F")
 # SWITCH(expression, value1, result1, [default or value2, result2],…[default or value3, result3])
 ```
 
+* Perl
+```pl
+# if|unless elsif else 
+# Statement Modifiers
+print "Basset hounds got long ears" if length $ear >= 10;
+```
+
 ## Iterations
 * SQL
 ```sql
@@ -111,6 +118,25 @@ parfor i=1:3, c(:,i) = eig(rand(1000)); end
 AGGREGATE(14,3,A1:A100*(A1:A100>0),1) # 14: LARGE, 3: ignore hidden rows, error values, nested SUBTOTAL and AGGREGATE functions
 ```
 
+* Perl
+```pl
+# while
+# do until
+# for(;;); for item (arr);
+# for when
+# next, redo(next without condition), last + label
+
+use v5.10.1;
+given|for ($var) {
+    when (/^abc/) { $abc = 1 }
+    when (/^def/) { $def = 1 }
+    when (/^xyz/) { $xyz = 1 }
+    default       { $nothing = 1 }
+}
+
+print "Hello $_!\n" for qw(world Dolly nurse);
+```
+
 ## Exceptions
 * SQL
 ```sql
@@ -150,10 +176,24 @@ end
 IFERROR (value, value_if_error)
 ```
 
+* Perl
+```pl
+try {
+    my $x = call_a_function();
+    $x < 100 or die "Too big";
+    send_output($x);
+}
+catch ($e) {
+}
+```
+
 ## Others
 * SQL
 * Cpp
 * Matlab
 * Excel
 * Perl
-
+```pl
+# ... statement
+sub unimplemented { ... }
+```
